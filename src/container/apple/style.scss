@@ -1,0 +1,246 @@
+@use '../../lib/servise.scss' as s;
+
+.header {
+    @extend .section;
+    background-color: s.color('backgroundDark');
+}
+
+.header__content {
+    @extend .section__content;
+    display: flex;
+    padding: s.space(4) 0;
+    justify-content: space-between;
+}
+
+.header__block {
+    display: flex;
+    gap: s.space(8);
+    align-items: center;
+}
+
+.header__icon {
+    @include s.click;
+}
+
+.header__link {
+    color: s.color('whiteLight');
+}
+
+.header__link {
+    font-size: s.size('small');
+}
+
+//
+
+.info {
+    @extend .header;
+    background-color: s.color('whiteColor');
+}
+
+.info__content {
+    @extend .header__content;
+    padding: s.space(3) 0;
+
+    @media all and (width < s.screen('tablet')) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.info__block {
+    @extend .header__block;
+}
+
+.info__title {
+    color: s.color('fontDark');
+    text-align: center;
+    font-size: s.size('medium');
+    line-height: 20px;
+}
+
+.info__link {
+    @include s.linkInfo;
+    font-size: s.size('medium');
+}
+
+// 
+
+.product {
+    @extend .section;
+    padding: s.space(20) 0 s.space(20) 0;
+}
+
+.product__content {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(5);
+    text-align: center;
+    justify-content: center;
+}
+
+.product__title {
+    font-size: 56px;
+    font-weight: 600;
+    // color: s.color('fontDark');
+}
+
+.product__description {
+    font-size: 28px;
+}
+
+.product__action {
+    display: flex;
+    align-items: center;
+    gap: s.space(5);
+    justify-content: center;
+
+    @include s.click;
+}
+
+.product__link {
+    @include s.linkAction;
+}
+
+.product {
+    @extend .section;
+    padding: s.space(20) 0 s.space(20) 0;
+
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.product-big {
+    max-height: 700px;
+    height: 100vh;
+
+    background-size: cover;
+
+    @media all and (width < s.screen('tablet')) {
+        background-size: 150%;
+
+        max-height: 500px;
+    }
+}
+
+.product-small {
+    max-height: 580px;
+    height: 100vh;
+
+    background-size: cover;
+
+    @media all and (width < s.screen('tablet')) {
+        background-size: 150%;
+
+        max-height: 500px;
+    }
+}
+
+.product--dark {
+
+    .product__title,
+    .product__description {
+        color: s.color('background');
+    }
+
+    background-color: #000;
+}
+
+.product--top {
+    .product__content {
+        justify-content: flex-start;
+    }
+}
+
+.product--bottom {
+    .product__content {
+        justify-content: flex-end;
+    }
+}
+
+.product--light {
+
+    .product__title,
+    .product__description {
+        color: s.color('fonDark');
+    }
+
+    background-color: s.color('whiteColor');
+}
+
+$productImage: (
+    'iphone-pro' '/img/iphone_pro.png' #000,
+    'iphone' '/img/iphone.png' s.color('whiteGrey'),
+    'iwatch' '/img/iwatch.png' #000,
+    'trade-in' '/img/trade_in.png' #fbfbfd,
+    'conference' '/img/conference.png' #000,
+    'ipad' '/img/ipad.png' #fbfbfd,
+    'small-business' '/img/small-business.png' #000,
+    'gift' '/img/gift.png' #fbfbfd,
+    'card' '/img/card.png' #fbfbfd
+);
+
+@each $class, $url, $color in $productImage {
+    .product--#{$class} {
+        background-image: url(#{$url});
+        background-color: $color;
+    }
+}
+
+.product-small {
+
+    .product__title {
+        font-size: 40px;
+    }
+
+    .product__description {
+        font-size: 20px;
+    }
+}
+
+// footer
+
+.footer {
+    @extend .header;
+    background-color: s.color('background');
+}
+
+.footer__map {
+    @extend .header__content;
+    padding: s.space(10) 0;
+}
+
+.footer__link {
+    @extend .header__link;
+    color: #424245;
+}
+
+.footer__map {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: s.space(5);
+
+    @media all and (width < s.screen('tablet')) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media all and (width < s.screen('mobile')) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer__map-block {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.footer__title {
+    color: s.color('fontDark');
+    font-size: s.size('small');
+    font-weight: 600;
+}
+
+.footer__links {
+    @extend .footer__map-block;
+    gap: s.space(3);
+}
