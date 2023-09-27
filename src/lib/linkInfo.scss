@@ -1,0 +1,19 @@
+@use './var.scss';
+@use './space.scss';
+
+@mixin linkInfo {
+    color: var.color('primary');
+    position: relative;
+    padding-right: calc(space.space(2) + 5px);
+
+    &::after {
+        content: '';
+        display: block;
+        width: 5px;
+        height: 9px;
+        background-image: url('/svg/arrowInfo.svg');
+        position: absolute;
+        right: 0;
+        top: calc(50% - 4px);
+    }
+}
